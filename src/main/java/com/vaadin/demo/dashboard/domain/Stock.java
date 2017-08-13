@@ -15,11 +15,15 @@
  */
 package com.vaadin.demo.dashboard.domain;
 
+import java.io.Serializable;
+
 /**
  * @author Kylin Soong
  */
-public class Stock {
+public class Stock implements Serializable {
 
+ 
+    private static final long serialVersionUID = -1571198948194151785L;
     private Integer product_id;
     private String symbol;
     private Double price;

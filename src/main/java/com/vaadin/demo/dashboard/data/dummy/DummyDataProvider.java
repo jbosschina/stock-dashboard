@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
@@ -85,6 +86,11 @@ public class DummyDataProvider implements DataProvider {
         RestClient.loadProduct(products);
         RestClient.loadMarketData(stockPrices);
         RestClient.loadStocks(stocks);
+        
+        top10Prices = stockPrices.stream().sorted(Comparator.comparing(StockPrice::getPrice)).collect(Collectors.toList());
+        for(int i = top10Prices.size() -1 ; i > 9 ; i--) {
+            top10Prices.remove(i);
+        }
     }
 
     /**
@@ -510,9 +516,11 @@ public class DummyDataProvider implements DataProvider {
                 });
     }
     
-    private List<Product> products = new ArrayList<>();
-    private List<StockPrice> stockPrices = new ArrayList<>();
-    private List<Stock> stocks = new ArrayList<>();
+    private static List<Product> products = new ArrayList<>();
+    private static List<StockPrice> stockPrices = new ArrayList<>();
+    private static List<Stock> stocks = new ArrayList<>();
+    
+    private static List<StockPrice> top10Prices;
 
     @Override
     public Collection<Product> getProducts() {
@@ -527,6 +535,11 @@ public class DummyDataProvider implements DataProvider {
     @Override
     public Collection<Stock> getStocks() {
         return Collections.unmodifiableCollection(stocks);
+    }
+
+    @Override
+    public Collection<StockPrice> getTop10Stocks() {
+        return Collections.unmodifiableCollection(top10Prices);
     }
 
 }

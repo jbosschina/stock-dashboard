@@ -82,4 +82,6 @@ public interface DataProvider {
     Collection<StockPrice> getStockPrices();
     
     Collection<Stock> getStocks();
+    
+    Collection<StockPrice> getTop10Stocks();
 }

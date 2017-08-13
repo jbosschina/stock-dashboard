@@ -10,7 +10,9 @@ import com.vaadin.demo.dashboard.domain.StockPrice;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.themes.ValoTheme;
 
-
+/**
+ * @author Kylin Soong
+ */
 public class TopTenStocks extends Grid<StockPrice>{
     
     private static final DecimalFormat DECIMALFORMAT = new DecimalFormat("#.##");
@@ -30,7 +32,7 @@ public class TopTenStocks extends Grid<StockPrice>{
         addColumn(stock -> "$"+ DECIMALFORMAT.format(stock.getPrice())).setId("Price");
         setColumnReorderingAllowed(false);
         
-        Collection<StockPrice> prices = DashboardUI.getDataProvider().getStockPrices();
+        Collection<StockPrice> prices = DashboardUI.getDataProvider().getTop10Stocks();
         ListDataProvider<StockPrice> dataProvider = com.vaadin.data.provider.DataProvider.ofCollection(prices);
         dataProvider.addSortComparator(Comparator.comparing(StockPrice::getPrice).reversed()::compare);
         setDataProvider(dataProvider);

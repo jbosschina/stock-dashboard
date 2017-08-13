@@ -15,11 +15,14 @@
  */
 package com.vaadin.demo.dashboard.domain;
 
+import java.io.Serializable;
+
 /**
  * @author Kylin Soong
  */
-public class Product {
+public class Product implements Serializable {
 
+    private static final long serialVersionUID = 7415754178658398903L;
     private Integer id;
     private String symbol;
     private String company_name;

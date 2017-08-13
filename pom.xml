@@ -9,6 +9,7 @@
 	<properties>
 		<productionMode>false</productionMode>
 		<vaadin.version>8.0.1</vaadin.version>
+		<version.wildfly-swarm>2017.8.0</version.wildfly-swarm>
 		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<version.openshift-client>2.5.2</version.openshift-client>

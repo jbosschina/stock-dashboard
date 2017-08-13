@@ -36,7 +36,7 @@ public class LoginView extends VerticalLayout {
         setComponentAlignment(loginForm, Alignment.MIDDLE_CENTER);
 
         Notification notification = new Notification("Welcome to Stocks Dashboard");
-        notification.setDescription("<span>This application is not real, it only demonstrates an application built with the <a href=\"https://vaadin.com\">Vaadin framework</a>.</span> <span>No username or password is required, just click the <b>Sign In</b> button to continue.</span>");
+        notification.setDescription("<span>This application is for demonstration only. </span> <span>No username or password is required, just click the <b>Sign In</b> button to continue.</span>");
         notification.setHtmlContentAllowed(true);
         notification.setStyleName("tray dark small closable login-help");
         notification.setPosition(Position.BOTTOM_CENTER);

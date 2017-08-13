@@ -48,6 +48,7 @@ public class RestClient {
                 items.add(new Product(id, symbol, company_name));
             });
             in.close();
+            System.out.println("Load " + items.size() + " items via " + url);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -110,6 +111,7 @@ public class RestClient {
                 items.add(new StockPrice(symbol, price));
             });
             in.close();
+            System.out.println("Load " + items.size() + " items via " + url);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -130,6 +132,7 @@ public class RestClient {
                 items.add(new Stock(id, symbol, price, company_name));
             });
             in.close();
+            System.out.println("Load " + items.size() + " items via " + url);
         } catch (Exception e) {
             e.printStackTrace();
         }

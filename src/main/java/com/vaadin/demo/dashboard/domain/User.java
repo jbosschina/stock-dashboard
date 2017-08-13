@@ -1,6 +1,10 @@
 package com.vaadin.demo.dashboard.domain;
 
-public final class User {
+import java.io.Serializable;
+
+public final class User implements Serializable {
+ 
+    private static final long serialVersionUID = 7108109209649012877L;
     private String role;
     private String firstName;
     private String lastName;
