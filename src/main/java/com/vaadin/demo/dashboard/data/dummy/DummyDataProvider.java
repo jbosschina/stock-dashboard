@@ -83,14 +83,27 @@ public class DummyDataProvider implements DataProvider {
         movies = loadMoviesData();
         transactions = generateTransactionsData();
         revenue = countRevenues();
-        RestClient.loadProduct(products);
-        RestClient.loadMarketData(stockPrices);
-        RestClient.loadStocks(stocks);
         
-        top10Prices = stockPrices.stream().sorted(Comparator.comparing(StockPrice::getPrice)).collect(Collectors.toList());
-        for(int i = top10Prices.size() -1 ; i > 9 ; i--) {
-            top10Prices.remove(i);
+        
+        if(products.size() == 0) {
+            RestClient.loadProduct(products);
         }
+        
+        if(stockPrices.size() == 0) {
+            RestClient.loadMarketData(stockPrices);
+        }
+        
+        if(stocks.size() == 0) {
+            RestClient.loadStocks(stocks);
+        }
+        
+        if(top10Prices == null || top10Prices.size() == 0) {
+            top10Prices = stockPrices.stream().sorted(Comparator.comparing(StockPrice::getPrice)).collect(Collectors.toList());
+            for(int i = top10Prices.size() -1 ; i > 9 ; i--) {
+                top10Prices.remove(i);
+            }
+        }
+        
     }
 
     /**
@@ -541,5 +554,6 @@ public class DummyDataProvider implements DataProvider {
     public Collection<StockPrice> getTop10Stocks() {
         return Collections.unmodifiableCollection(top10Prices);
     }
+    
 
 }
