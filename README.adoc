@@ -2,7 +2,7 @@
 
 This is a sample project for demonstrating Teiid Data Service on OpenShift. This example originally came from vaadin https://github.com/vaadin/dashboard-demo[vaadin demo].
 
-The current dashboard mainly consume the OData Service supplied by https://github.com/teiid/wildfly-swarm-teiid-examples/tree/master/vdb-datafederation[Teiid WFS vdb-datafederation Eexample], the following api be invoked:
+The current dashboard mainly consume the OData Service supplied by https://github.com/teiid/wildfly-swarm-teiid-examples/tree/master/vdb-datafederation[Teiid WFS vdb-datafederation Example], the following api be invoked:
 
 [source, text]
 ----
