@@ -3,7 +3,7 @@ package com.vaadin.demo.dashboard.view;
 import com.vaadin.demo.dashboard.view.dashboard.DashboardView;
 import com.vaadin.demo.dashboard.view.reports.ReportsView;
 import com.vaadin.demo.dashboard.view.sales.SalesView;
-import com.vaadin.demo.dashboard.view.teiid.ProductsView;
+import com.vaadin.demo.dashboard.view.teiid.AccountsPanel;
 import com.vaadin.demo.dashboard.view.teiid.StockPricesChartView;
 import com.vaadin.demo.dashboard.view.teiid.StockPricesView;
 import com.vaadin.demo.dashboard.view.teiid.StocksView;
@@ -20,10 +20,10 @@ import com.vaadin.server.Resource;
 public enum DashboardViewType {
     
     DASHBOARD("dashboard", DashboardView.class, VaadinIcons.HOME, true), 
-    MARKETTRENDS("marketTrends", StockPricesChartView.class, VaadinIcons.CHART, false), 
-    PRODUCTS("products", ProductsView.class, VaadinIcons.TABLE, false), 
-    PRICES("prices", StockPricesView.class, VaadinIcons.TABLE, false), 
-    STOCKS("stocks", StocksView.class, VaadinIcons.TABLE, false), 
+    MARKETTRENDS("marketTrends", StockPricesChartView.class, VaadinIcons.CHART, false),  
+    ACCOUNTS("accountsData", AccountsPanel.class, VaadinIcons.TABLE, false),
+    PRICES("marketData", StockPricesView.class, VaadinIcons.TABLE, false),
+//    STOCKS("stocks", StocksView.class, VaadinIcons.TABLE, false), 
     REPORTS("reports", ReportsView.class, VaadinIcons.FILE_TEXT_O, true),
     
     SALES("sales", SalesView.class, VaadinIcons.CHART, false),

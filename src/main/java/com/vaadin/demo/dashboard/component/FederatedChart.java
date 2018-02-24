@@ -11,7 +11,7 @@ import com.vaadin.addon.charts.model.PlotOptionsBar;
 import com.vaadin.addon.charts.model.Series;
 import com.vaadin.demo.dashboard.DashboardUI;
 import com.vaadin.demo.dashboard.data.dummy.DummyDataGenerator;
-import com.vaadin.demo.dashboard.domain.Stock;
+import com.vaadin.demo.dashboard.domain.StockPrice;
 
 /**
  * @author Kylin Soong
@@ -31,7 +31,7 @@ public class FederatedChart extends Chart{
         getConfiguration().getyAxis().setTitle("");
         setSizeFull();
         
-        List<Stock> stocks = new ArrayList<Stock>(DashboardUI.getDataProvider().getStocks());
+        List<StockPrice> stocks = new ArrayList<StockPrice>(DashboardUI.getDataProvider().getStockPrices());
         
         List<Series> series = new ArrayList<Series>();
         int size = stocks.size();
@@ -39,14 +39,14 @@ public class FederatedChart extends Chart{
             size = 6;
         }
         for (int i = 0; i < size; i++) {
-            Stock stock = stocks.get(i);
+        	StockPrice stock = stocks.get(i);
             PlotOptionsBar opts = new PlotOptionsBar();
             opts.setColor(DummyDataGenerator.chartColors[i]);
             opts.setBorderWidth(0);
             opts.setShadow(false);
             opts.setPointPadding(0.4);
             opts.setAnimation(false);
-            ListSeries item = new ListSeries(stock.getCompany_name(), stock.getPrice());
+            ListSeries item = new ListSeries(stock.getSymbol(), stock.getPrice());
             item.setPlotOptions(opts);
             series.add(item);
         }

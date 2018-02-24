@@ -2,6 +2,7 @@ package com.vaadin.demo.dashboard.event;
 
 import java.util.Collection;
 
+import com.vaadin.demo.dashboard.domain.Account;
 import com.vaadin.demo.dashboard.domain.Product;
 import com.vaadin.demo.dashboard.domain.Stock;
 import com.vaadin.demo.dashboard.domain.StockPrice;
@@ -77,6 +78,19 @@ public abstract class DashboardEvent {
 
         public Collection<Product> getProducts() {
             return products;
+        }
+    }
+    
+    public static final class AccountReportEvent {
+        
+        private final Collection<Account> items;
+        
+        public AccountReportEvent(final Collection<Account> items) {
+            this.items = items;
+        }
+
+        public Collection<Account> getProducts() {
+            return items;
         }
     }
     

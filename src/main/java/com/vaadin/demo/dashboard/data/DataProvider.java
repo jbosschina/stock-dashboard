@@ -3,6 +3,7 @@ package com.vaadin.demo.dashboard.data;
 import java.util.Collection;
 import java.util.Date;
 
+import com.vaadin.demo.dashboard.domain.Account;
 import com.vaadin.demo.dashboard.domain.DashboardNotification;
 import com.vaadin.demo.dashboard.domain.Movie;
 import com.vaadin.demo.dashboard.domain.MovieRevenue;
@@ -84,4 +85,8 @@ public interface DataProvider {
     Collection<Stock> getStocks();
     
     Collection<StockPrice> getTop10Stocks();
+    
+    Collection<Account> getAllAccount();
+    Collection<Account> getAPACAccount();
+    Collection<Account> getUSAccount();
 }

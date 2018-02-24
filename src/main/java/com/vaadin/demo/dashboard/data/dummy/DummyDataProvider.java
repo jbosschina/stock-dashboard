@@ -36,6 +36,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.vaadin.demo.dashboard.data.DataProvider;
+import com.vaadin.demo.dashboard.domain.Account;
 import com.vaadin.demo.dashboard.domain.DashboardNotification;
 import com.vaadin.demo.dashboard.domain.Movie;
 import com.vaadin.demo.dashboard.domain.MovieRevenue;
@@ -51,6 +52,8 @@ import com.vaadin.util.CurrentInstance;
  * A dummy implementation for the backend API.
  */
 public class DummyDataProvider implements DataProvider {
+	
+	private static List<StockPrice> stockPrices = new ArrayList<>();
 
     // TODO: Get API key from http://developer.rottentomatoes.com
     private static final String ROTTEN_TOMATOES_API_KEY = null;
@@ -84,17 +87,25 @@ public class DummyDataProvider implements DataProvider {
         transactions = generateTransactionsData();
         revenue = countRevenues();
         
-        
-        if(products.size() == 0) {
-            RestClient.loadProduct(products);
+        if(stockPrices.size() == 0) {
+            ODataClientUtils.loadMarketData(stockPrices);
+        }
+        if(allAccounts.size() == 0) {
+        	ODataClientUtils.loadCustomersAccount(allAccounts);
+        }
+        if(apacAccounts.size() == 0) {
+        	ODataClientUtils.loadAPAC_CustomersAccount(apacAccounts);
+        }
+        if(usAccounts.size() == 0) {
+        	ODataClientUtils.loadUS_CustomersAccount(usAccounts);
         }
         
-        if(stockPrices.size() == 0) {
-            RestClient.loadMarketData(stockPrices);
+        if(products.size() == 0) {
+            ODataClientUtils.loadProduct(products);
         }
         
         if(stocks.size() == 0) {
-            RestClient.loadStocks(stocks);
+            ODataClientUtils.loadStocks(stocks);
         }
         
         if(top10Prices == null || top10Prices.size() == 0) {
@@ -530,10 +541,13 @@ public class DummyDataProvider implements DataProvider {
     }
     
     private static List<Product> products = new ArrayList<>();
-    private static List<StockPrice> stockPrices = new ArrayList<>();
+    
     private static List<Stock> stocks = new ArrayList<>();
     
     private static List<StockPrice> top10Prices;
+    private static List<Account> allAccounts = new ArrayList<>();
+    private static List<Account> apacAccounts = new ArrayList<>();
+    private static List<Account> usAccounts = new ArrayList<>();
 
     @Override
     public Collection<Product> getProducts() {
@@ -554,6 +568,21 @@ public class DummyDataProvider implements DataProvider {
     public Collection<StockPrice> getTop10Stocks() {
         return Collections.unmodifiableCollection(top10Prices);
     }
+
+	@Override
+	public Collection<Account> getAllAccount() {
+		return Collections.unmodifiableCollection(allAccounts);
+	}
+
+	@Override
+	public Collection<Account> getAPACAccount() {
+		return Collections.unmodifiableCollection(apacAccounts);
+	}
+
+	@Override
+	public Collection<Account> getUSAccount() {
+		return Collections.unmodifiableCollection(usAccounts);
+	}
     
 
 }

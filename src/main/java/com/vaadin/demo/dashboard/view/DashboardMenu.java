@@ -85,7 +85,7 @@ public final class DashboardMenu extends CustomComponent {
     }
 
     private Component buildTitle() {
-        Label logo = new Label("Stocks <strong>Dashboard</strong>",ContentMode.HTML);
+        Label logo = new Label("VDB <strong>Dashboard</strong>",ContentMode.HTML);
         logo.setSizeUndefined();
         HorizontalLayout logoWrapper = new HorizontalLayout(logo);
         logoWrapper.setComponentAlignment(logo, Alignment.MIDDLE_CENTER);

@@ -11,7 +11,7 @@ import com.vaadin.addon.charts.model.DataSeriesItem;
 import com.vaadin.addon.charts.model.PlotOptionsPie;
 import com.vaadin.demo.dashboard.DashboardUI;
 import com.vaadin.demo.dashboard.data.dummy.DummyDataGenerator;
-import com.vaadin.demo.dashboard.domain.Stock;
+import com.vaadin.demo.dashboard.domain.StockPrice;
 
 public class FederatePie extends Chart{
 
@@ -30,14 +30,14 @@ public class FederatePie extends Chart{
         
         DataSeries series = new DataSeries();
         
-        List<Stock> stocks = new ArrayList<Stock>(DashboardUI.getDataProvider().getStocks());
+        List<StockPrice> stocks = new ArrayList<StockPrice>(DashboardUI.getDataProvider().getStockPrices());
         int size = stocks.size();
         if(size > 6) {
             size = 6;
         }
         
         for (int i = 0; i < size; i++) {
-            Stock stock = stocks.get(i);
+        	StockPrice stock = stocks.get(i);
             DataSeriesItem item = new DataSeriesItem(stock.getSymbol(), stock.getPrice());
             item.setColor(DummyDataGenerator.chartColors[i]);
             series.add(item);

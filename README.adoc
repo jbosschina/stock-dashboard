@@ -1,0 +1,5 @@
+=  What's this
+
+This is a sample project for demonstrating Teiid Data Service on OpenShift. This example originally came from vaadin https://github.com/vaadin/dashboard-demo.
+
+The current dashboard mainly consume the OData Service supplied by https://github.com/teiid/wildfly-swarm-teiid-examples/tree/master/vdb-datafederation
